@@ -1,0 +1,186 @@
+@import "../../Styles/config";
+
+.ReviewSection {
+    width: 60%;
+    .average_reviews {
+        margin: 20px 0;
+        .stars_left {
+            margin-left: 0;
+            padding: 30px;
+        }
+    }
+    .reviews {
+        div {
+            margin-top: 40px;
+            .user_info {
+                display: flex;
+                align-items: center;
+                font-size: 0.8rem;
+                .profileImage {
+                    width: 50px;
+                    height: 50px;
+                    margin-right: 20px;
+                    img {
+                        border-radius: 35px;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+            .review {
+                margin-top: 10px;
+                padding: 10px 50px;
+            }
+        }
+    }
+
+    form {
+        fieldset {
+            margin: 5rem auto;
+            padding: 2rem;
+            width: 80%;
+            border-color: #a0a0a048;
+            * {
+                border-radius: 3px;
+                margin-bottom: 10px;
+            }
+            legend {
+                width: auto;
+                margin-left: 10px;
+                font-size: 0.9rem;
+            }
+
+            .rating {
+                text-align: center;
+                padding: 10px;
+                .rating_stars {
+                    direction: rtl;
+                    input {
+                        display: none;
+                    }
+                    label {
+                        font-size: 1.5rem;
+                        text-shadow: 1px 1px #bbb;
+                        &::before {
+                            content: "\2605";
+                        }
+                    }
+                    input:checked ~ label {
+                        color: goldenrod;
+                    }
+                    &:not(:checked) > label:hover,
+                    &:not(:checked) > label:hover ~ label {
+                        color: goldenrod;
+                    }
+                }
+            }
+            .row_1 {
+                display: flex;
+                width: 100%;
+                gap: 10px;
+                input {
+                    width: 50%;
+                }
+            }
+            input {
+                border: none;
+                font-size: 0.9rem;
+                border: 1px solid darken($secondaryBgColor, 20%);
+                border-radius: 3px;
+                outline: none;
+                padding: 10px;
+                width: 100%;
+            }
+            input[type="submit"] {
+                background-color: $secondaryColor;
+                color: white;
+                cursor: pointer;
+                border: none;
+                outline: none;
+                font-size: 1.1rem;
+
+                &:focus {
+                    outline: none;
+                }
+
+                &:hover {
+                    background-color: darken($secondaryColor, 10%);
+                }
+            }
+
+            textarea {
+                border: 1px solid darken($secondaryBgColor, 20%);
+                outline: none;
+                padding: 10px;
+                resize: vertical;
+                width: 100%;
+                font-size: 0.9rem;
+            }
+            input:focus,
+            textarea:focus {
+                box-shadow: 0px 0px 5px darken($secondaryBgColor, 40%);
+                border: 0px;
+            }
+        }
+    }
+}
+
+.stars {
+    position: relative;
+    width: 110px;
+    height: 40px;
+    display: block;
+    padding: 5px;
+}
+
+.stars::after {
+    content: "\2605 \2605 \2605 \2605 \2605";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 65%;
+    display: block;
+    font-size: 1.4rem;
+    color: #cea22b;
+    overflow: hidden;
+}
+
+.stars::before {
+    content: "\2606 \2606 \2606 \2606 \2606";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.4rem;
+    color: #cea22b;
+}
+
+@media only screen and (max-width: 768px) {
+    .ReviewSection {
+        width: 100%;
+        .reviews div {
+            .review {
+                padding: 0;
+            }
+        }
+        form {
+            fieldset {
+                width: 100%;
+                .row_1 {
+                    flex-wrap: wrap;
+                    input {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .ReviewSection {
+        form fieldset {
+            margin-top: 5%;
+            padding: 1rem;
+        }
+    }
+}
