@@ -1,4 +1,5 @@
 {
+  "homepage": "https://ismail-nijazi.github.io/Shoes-Store",
   "name": "online-store",
   "version": "0.1.0",
   "private": true,
@@ -20,6 +21,8 @@
     "zoomove": "^1.3.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+	"deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -44,6 +47,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^3.2.3",
     "node-sass": "^6.0.1"
   }
 }
