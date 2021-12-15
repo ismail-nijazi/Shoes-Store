@@ -14,6 +14,7 @@ const Navbar = () => {
 	const shoppingCartVisibility = useSelector(
 		(state) => state.cartVisibility.visibility
 	);
+
 	const dispatch = useDispatch();
 	const navbar = useRef();
 	const [nav, setNav] = useState(navbar);

@@ -1,17 +1,45 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import { cartProductsActions } from "../../redux/store";
 import ProductImages from "./ProductImages";
 import "./ProductShopInfo.scss";
 
+
 const ProductShopInfo = () => {
-	const product = useSelector(state => state.selectedProduct.product);
-	const [selectedSize, setSize] = useState(product.sizes[0]);
+	const productID = useParams().productID;
+	let product = useSelector(state => state.selectedProduct.product);
+	const allProducts = useSelector(state => state.selectedFilters.allProducts);
+	const [selectedSize, setSize] = useState(null);
+	const [selectedCount, setCount] = useState(1);
 	const dispatch = useDispatch();
+
+	const checkForProduct = () => {
+		if (Object.keys(product).length === 0) {
+			for (const p of allProducts) {
+				if (p.id === +productID) {
+					product = { ...p };
+					break;
+				}
+			}
+		}
+	};
+	checkForProduct();
 
 	const selectSize = (e) => {
 		setSize(+e.target.dataset.size);
 	}
+
+	const decreaseTheCount = () => {
+		if (selectedCount > 1) {
+			setCount(selectedCount - 1);
+		}
+	}
+
+	const increaseTheCount = () => {
+		setCount(selectedCount + 1);
+	}
+
 	const generateSizeList = () => {
 		return product.sizes.map((size) => {
 			return (
@@ -30,14 +58,14 @@ const ProductShopInfo = () => {
 	const generateColorList = () => {
 		return product.colors.map((color) => {
 			return (
-				<button href="/#" className="dot" style={{ backgroundColor: color }}></button>
+				<button href="/#" className="dot" style={{ backgroundColor: color }} key={color}></button>
 			);
 		});
 	}
 
 	const addToCart = () => {
 		let addToCartProduct = { ...product };
-		addToCartProduct["count"] = 1;
+		addToCartProduct["count"] = selectedCount;
 		addToCartProduct["basePrice"] = product.price;
 		addToCartProduct["size"] = selectedSize;
 
@@ -82,11 +110,11 @@ const ProductShopInfo = () => {
 				<h3 className="price">${product.price}</h3>
 				<div className="showItemsInRow">
 					<div className="chooseProductCount">
-						<button className="btn-plus_minus">
+						<button className="btn-plus_minus" onClick={decreaseTheCount}>
 							<i className="fas fa-minus"></i>
 						</button>
-						<h2 id="count_of_product">1</h2>
-						<button className="btn-plus_minus">
+						<h2 id="count_of_product">{selectedCount}</h2>
+						<button className="btn-plus_minus" onClick={increaseTheCount}>
 							<i className="fas fa-plus"></i>
 						</button>
 					</div>

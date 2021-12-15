@@ -67,15 +67,6 @@ const cartProducts = createSlice({
 	},
 });
 
-const aboutPageSections = createSlice({
-	name: "aboutSections",
-	initialState: { sections: [] },
-	reducers: {
-		addSectionRef: (state, action) => {
-			state.sections.push(action.payload);
-		},
-	},
-});
 
 const filter = createSlice({
 	name: "filter",
@@ -196,13 +187,15 @@ const selectedFilters = createSlice({
 			},
 		],
 		productToBeShown: [],
+		countOfIndependentFilter: 0,
 		filters: {
-			brands: [],
+			brand: [],
 			types: [],
 			colors: [],
 			sizes: [],
-
 		},
+		priceFilter: 200,
+
 	},
 	reducers: {
 		filterProducts: (state) => {
@@ -214,62 +207,87 @@ const selectedFilters = createSlice({
 				}
 				return -1;
 			}
-			let prdocutListCopy = [...state.productToBeShown];
-			let count_emptyFilters = 0;
-			state.productToBeShown = [];
-			for (const [key, value] of Object.entries(state.filters)) {
-				let filterType = key === "brands" ? "brand" : key;
 
+			function filterByPrice() {
+				for (let i = 0; i < state.productToBeShown.length; i++) {
+					if (state.productToBeShown[i].price > state.priceFilter) {
+						state.productToBeShown.splice(i, 1);
+						i--;
+					}
+				}
+			}
+			const dependentFiltersList = ["colors", "sizes", "types"]
+			let prdocutListCopy = [...state.productToBeShown];
+			let productToBeRemoved = [];
+			state.productToBeShown = [];
+			// Check if is there any filter checked and if it is not so it will set filtered products to all products
+			if (state.countOfIndependentFilter === 0) {
+				state.productToBeShown = [...state.allProducts];
+				prdocutListCopy = [...state.allProducts];
+			}
+			for (const [key, value] of Object.entries(state.filters)) {
 				if (value.length > 0) {
-					const dependentFilters = key === "colors" || key === "sizes"
+
+					// if filter depends on filtered products
+					const dependentFilters = dependentFiltersList.includes(key);
 					let productList = dependentFilters ? prdocutListCopy : [...state.allProducts];
 					for (let index = 0; index < productList.length; index++) {
 						for (const filter of value) {
 							const correctData = isNaN(filter) ? filter : +filter;
-							if (Array.isArray(productList[index][filterType])) {
-								if (productList[index][filterType].includes(correctData)) {
-									const productIndex = getIndex(state.productToBeShown, productList[index]);
-									if (productIndex === -1) {
-										state.productToBeShown.push(productList[index])
-									}
-								}
-								else if (dependentFilters) {
-									state.productToBeShown.splice(index, 1);
-								}
-							} else {
-								if (correctData === productList[index][filterType]) {
-									const productIndex = getIndex(state.productToBeShown, productList[index]);
-									if (productIndex === -1) {
-										state.productToBeShown.push(productList[index])
-									}
-								}
-								else if (dependentFilters) {
-									state.productToBeShown.splice(index, 1)
+							if (dependentFilters) {
+								if (!productList[index][key].includes(correctData)) {
+									productToBeRemoved.push(productList[index]);
 								}
 							}
-
-
+							else if (Array.isArray(productList[index][key])) {
+								if (productList[index][key].includes(correctData)) {
+									const productIndex = getIndex(state.productToBeShown, productList[index]);
+									if (productIndex === -1) {
+										state.productToBeShown.push(productList[index]);
+									}
+								}
+							}
+							else {
+								if (correctData === productList[index][key]) {
+									const productIndex = getIndex(state.productToBeShown, productList[index]);
+									if (productIndex === -1) {
+										state.productToBeShown.push(productList[index])
+									}
+								}
+							}
 						}
 					}
-				} else {
-					count_emptyFilters++;
 				}
 			}
-
-			if (count_emptyFilters === Object.keys(state.filters).length) {
-				state.productToBeShown = state.allProducts;
-			}
+			productToBeRemoved.forEach(productToRemove => {
+				for (let i = 0; i < state.productToBeShown.length; i++) {
+					if (productToRemove.id === state.productToBeShown[i].id) {
+						state.productToBeShown.splice(i, 1);
+					}
+				}
+			});
+			filterByPrice();
 		},
 		addRemoveFilter: (state, action) => {
 			// action payload will be in {type:"typeOfFilter", item:"selectedFilter"} format
 			const type = action.payload.type;
 			const item = action.payload.item;
-			const exists = state.filters[type].indexOf(item);
-
-			if (exists !== -1) {
-				state.filters[type].splice(exists, 1);
-			} else {
-				state.filters[type].push(item);
+			if (type === "price") {
+				state.priceFilter = item;
+			}
+			else {
+				const exists = state.filters[type].indexOf(item);
+				if (exists !== -1) {
+					state.filters[type].splice(exists, 1);
+					if (type === "brand") {
+						state.countOfIndependentFilter -= 1;
+					}
+				} else {
+					state.filters[type].push(item);
+					if (type === "brand") {
+						state.countOfIndependentFilter += 1;
+					}
+				}
 			}
 		},
 	},
@@ -290,36 +308,22 @@ const SelectedProduct = createSlice({
 
 
 const store = configureStore({
-	middleware: (getDefaultMiddleware) =>
-		getDefaultMiddleware({
-			serializableCheck: {
-				// Ignore these action types
-				ignoredActions: [
-					"aboutSections/addSectionRef",
-					"aboutSections.sections",
-				],
-				// Ignore these field paths in all actions
-				ignoredActionPaths: ["sections"],
-				// Ignore these paths in the state
-				ignoredPaths: ["aboutPageSections.sections"],
-			},
-		}),
 	reducer: {
 		navbarVisibility: navbarSlice.reducer,
 		cartVisibility: shoppingCartSlice.reducer,
 		cartProducts: cartProducts.reducer,
-		aboutPageSections: aboutPageSections.reducer,
 		filters: filter.reducer,
 		selectedFilters: selectedFilters.reducer,
 		selectedProduct: SelectedProduct.reducer
 	},
 });
 
+
+
 export default store;
 
 export const navbarActions = navbarSlice.actions;
 export const shoppingCartActions = shoppingCartSlice.actions;
 export const cartProductsActions = cartProducts.actions;
-export const aboutSections = aboutPageSections.actions;
 export const filtersSelection = selectedFilters.actions;
 export const productDetail = SelectedProduct.actions;
