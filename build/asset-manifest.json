@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/online-store/static/css/main.34b03d87.chunk.css",
+    "main.js": "/online-store/static/js/main.3469d534.chunk.js",
+    "main.js.map": "/online-store/static/js/main.3469d534.chunk.js.map",
+    "runtime-main.js": "/online-store/static/js/runtime-main.a65ec2eb.js",
+    "runtime-main.js.map": "/online-store/static/js/runtime-main.a65ec2eb.js.map",
+    "static/js/2.71448859.chunk.js": "/online-store/static/js/2.71448859.chunk.js",
+    "static/js/2.71448859.chunk.js.map": "/online-store/static/js/2.71448859.chunk.js.map",
+    "index.html": "/online-store/index.html",
+    "static/css/main.34b03d87.chunk.css.map": "/online-store/static/css/main.34b03d87.chunk.css.map",
+    "static/js/2.71448859.chunk.js.LICENSE.txt": "/online-store/static/js/2.71448859.chunk.js.LICENSE.txt",
+    "static/media/CustomerService.ffc6e51c.png": "/online-store/static/media/CustomerService.ffc6e51c.png",
+    "static/media/Header.scss": "/online-store/static/media/header-background.7676f101.jpg",
+    "static/media/Main.scss": "/online-store/static/media/women.7beb01d5.jpg",
+    "static/media/profile_image_1.919beaad.jpg": "/online-store/static/media/profile_image_1.919beaad.jpg",
+    "static/media/profile_image_2.d529080c.jpg": "/online-store/static/media/profile_image_2.d529080c.jpg",
+    "static/media/shoes1.703c6883.jpg": "/online-store/static/media/shoes1.703c6883.jpg",
+    "static/media/shoes2.f0fed087.jpg": "/online-store/static/media/shoes2.f0fed087.jpg",
+    "static/media/shoes3.27d77857.jpg": "/online-store/static/media/shoes3.27d77857.jpg",
+    "static/media/shoes4.aac36eb7.jpg": "/online-store/static/media/shoes4.aac36eb7.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a65ec2eb.js",
+    "static/js/2.71448859.chunk.js",
+    "static/css/main.34b03d87.chunk.css",
+    "static/js/main.3469d534.chunk.js"
+  ]
+}
