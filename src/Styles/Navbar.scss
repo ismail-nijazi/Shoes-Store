@@ -12,7 +12,7 @@ nav {
     top: 0;
     left: 0;
     transition: 0.5s;
-    z-index: 10;
+    z-index: 100;
     ul {
         position: absolute;
         left: 50%;
@@ -133,6 +133,9 @@ nav {
         .showNavLinks {
             transform: translateX(0%);
         }
+        .navRightSide {
+            width: 40%;
+        }
     }
 }
 
@@ -143,27 +146,18 @@ nav {
         ul {
             width: 100%;
         }
-        .navRightSide {
-            button {
-                margin: 0 3px;
-                #showShoppinCartIcon {
-                    font-size: 1.4rem;
-                }
-            }
+        .navRightSide > button {
+            cursor: pointer;
+            margin: 0 3px;
         }
 
         .logo {
+            font-size: 1.1rem;
             position: absolute;
-            left: 0;
-        }
-    }
-    .header-row-2 {
-        text-align: center;
-        h1 {
-            font-size: 2em;
-        }
-        p {
-            font-size: 0.8rem;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: fit-content;
         }
     }
 }

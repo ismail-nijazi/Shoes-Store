@@ -91,3 +91,64 @@
 .hide {
     display: none;
 }
+
+@media only screen and (max-width: 1024px) {
+    .AboutPage .questionsSection .commonQuestions {
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .AboutPage {
+        .aboutText {
+            padding: 50px 10px;
+
+            section {
+                width: 80%;
+                min-height: 100px;
+                margin: auto;
+                text-align: center;
+            }
+        }
+        .CustomerServiceHeader figure {
+            display: none;
+        }
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .AboutPage {
+        margin-top: 100px;
+        .header-container {
+            width: 95%;
+            h3 {
+                padding: 30px;
+            }
+        }
+        .aboutText section {
+            width: 100%;
+        }
+        .sectionsContent {
+            div,
+            section {
+                width: 100%;
+                h4 {
+                    font-weight: 400;
+                }
+                i {
+                    font-size: 1.5rem;
+                }
+            }
+            section {
+                padding: 10px 20px;
+            }
+        }
+        .questionsSection .commonQuestions {
+            width: 80%;
+            ul {
+                padding: 30px 10px;
+                width: 100%;
+            }
+        }
+    }
+}
