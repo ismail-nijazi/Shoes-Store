@@ -1,0 +1,45 @@
+@import "../../Styles/config";
+
+.productInfo {
+	.info{
+		padding: 20px;
+		margin-bottom: 2rem;
+		p{
+			font-size: 1rem;
+			font-weight: 300;
+		}
+	}
+    ul {
+        display: block;
+        text-align: left;
+        .headRow {
+            h5 {
+                background-color: $secondaryBgColor;
+                padding: 8px;
+                font-size: 0.8rem;
+                color: darken($secondaryBgColor, 60%);
+            }
+            ul {
+                display: block;
+                padding: 20px;
+                font-size: 0.85rem;
+				list-style: circle;
+                .rows {
+                    width: 100%;
+                    padding: 10px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .productInfo ul .headRow {
+        ul {
+            padding: 10px;
+            span {
+                font-weight: 600;
+            }
+        }
+    }
+}

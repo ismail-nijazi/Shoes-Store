@@ -1,0 +1,42 @@
+$primaryColor: #ffffff;
+$secondaryBgColor: #eee;
+$primaryTextColor: #1a1a1a;
+$secondaryColor: #3fa3b3;
+
+%flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+%buttons {
+    background-color: $secondaryColor;
+    font-size: 1rem;
+    padding: 10px 30px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.5s;
+}
+
+%main-sections-titles {
+    margin: 5em 0 4em 0;
+    padding: 5px 0;
+    font-size: 1.6rem;
+    border-bottom: $secondaryColor 1px solid;
+    width: 210px;
+}
+
+%scrollbar-invisible {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+// %btn {
+//     @extend %buttons;
+//     background-color: darken($secondaryBgColor, 10%);
+//     color: $primaryTextColor;
+//     border-radius: 5px;
+// }

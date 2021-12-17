@@ -1,0 +1,126 @@
+@import "config";
+
+.shoppingCart {
+    @extend %scrollbar-invisible;
+    background-color: $primaryTextColor;
+    color: $primaryColor;
+    position: fixed;
+    top: 20vh;
+    right: 0;
+    width: 400px;
+    height: 600px;
+    overflow: hidden;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    overscroll-behavior: contain;
+    z-index: 100;
+    transition: 0.5s;
+    transform: translateX(100%);
+    h3 {
+        width: 100%;
+        background-color: $primaryTextColor;
+        text-align: center;
+        padding: 1rem;
+        margin: auto;
+        margin-bottom: 1rem;
+        border-bottom: $secondaryColor 1px solid;
+        font-weight: 500;
+        position: sticky;
+        top: 0;
+    }
+
+	.empty{
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		border: none;
+	}
+    .shoppingCartList {
+        width: 100%;
+        .cart-product {
+            border-bottom: #aaa 1px solid;
+            margin: auto;
+            width: 90%;
+            padding: 10px 0;
+            display: flex;
+            h5,
+            h6 {
+                font-size: 0.9rem;
+                font-weight: 600;
+            }
+			.price{
+				color: #e08d8d;
+			}
+            .countOfProduct {
+                font-size: 1.2rem;
+            }
+            div {
+                padding: 0 20px;
+            }
+            figure {
+                width: 180px;
+                img {
+                    width: 100%;
+                }
+            }
+            button {
+                cursor: pointer;
+                font-weight: 900;
+                font-size: 1.4rem;
+                color: $primaryColor;
+                &:active {
+                    color: $secondaryColor;
+                }
+            }
+            h6 {
+                margin-bottom: 10px;
+            }
+        }
+    }
+    .checkout {
+        display: block;
+        border: $secondaryColor 1px solid;
+        color: $primaryColor;
+        text-align: center;
+        width: 150px;
+        padding: 15px;
+        margin: 3rem auto;
+    }
+}
+
+.showShoppingCart {
+    transform: none;
+}
+
+@media screen and (max-width: 768px) {
+    .shoppingCart {
+        width: 300px;
+        top: 80px;
+        .shoppingCartList .cart-product {
+            figure {
+                width: 120px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .shoppingCart {
+        width: 100%;
+        height: 100%;
+        top: 80px;
+        bottom: 80px;
+        h3 {
+            margin-bottom: 2rem;
+        }
+        .shoppingCartList .cart-product {
+            figure {
+                width: 120px;
+            }
+        }
+        .checkout {
+            margin-bottom: 100px;
+        }
+    }
+}

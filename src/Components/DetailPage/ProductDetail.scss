@@ -1,0 +1,88 @@
+@import "../../Styles/config";
+
+.details {
+    margin-top: 4rem;
+    width: 100%;
+    .DescriptionHeader {
+        white-space: nowrap;
+        width: 100%;
+        background-color: $secondaryBgColor;
+        position: relative;
+        display: inline-block;
+        ul {
+            display: flex;
+            padding: 20px;
+            .nav-links {
+                cursor: pointer;
+                color: #333333;
+                text-align: center;
+                .link {
+                    width: fit-content;
+                    position: relative;
+                    padding: 0.1rem;
+                    &::before {
+                        content: "";
+                        width: 0%;
+                        height: 1px;
+                        border-top: $secondaryColor 1px solid;
+                        position: absolute;
+                        bottom: 0;
+                        transition: 0.5s;
+                    }
+                    &:hover::before {
+                        color: $secondaryColor;
+                        width: 100%;
+                    }
+                }
+            }
+            .activeTab {
+                .link {
+                    &::before {
+                        color: $secondaryColor;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+    .detailsContent {
+        position: relative;
+        width: 70vw;
+        min-height: 40vh;
+        margin: 10vh auto 10px;
+    }
+}
+
+.DescriptionHeader .nav-links:not(:first-child) {
+    margin-left: 5%;
+}
+
+.DescriptionHeader .nav-links:nth-of-type(1) {
+    margin-left: 1%;
+}
+
+@media only screen and (max-width: 768px) {
+    .details {
+        .detailsContent {
+            margin: 2rem auto;
+            width: 90vw;
+            padding: 0;
+        }
+    }
+    .DescriptionHeader .nav-links:not(:first-child) {
+        margin-left: 5%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .details {
+        .DescriptionHeader ul {
+            .nav-links .link {
+                font-size: 0.9rem;
+            }
+        }
+        .detailsContent {
+            width: 90%;
+        }
+    }
+}

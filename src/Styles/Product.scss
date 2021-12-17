@@ -1,0 +1,135 @@
+@import "config";
+
+.product {
+    cursor: pointer;
+    height: 500px;
+    flex-basis: 25%;
+    padding: 5px;
+    overflow: hidden;
+    .product-img {
+        height: 60%;
+        background-color: $secondaryBgColor;
+        position: relative;
+        overflow: hidden;
+        img {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+        }
+    }
+    .productInfo {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        margin: 20px 0;
+        animation: fadeUp 0.5s;
+        h5 {
+            font-size: 0.9em;
+        }
+        p {
+            font-size: 0.7em;
+        }
+        .price {
+            font-size: 1em;
+            color: rgb(214, 64, 64);
+            text-align: right;
+        }
+    }
+
+    .productButtons {
+        margin-top: 5%;
+        display: none;
+        animation: fade 0.5s;
+        @extend %flex-center;
+        justify-content: center;
+        position: relative;
+        button {
+            @extend %buttons;
+            @extend %flex-center;
+            width: 60%;
+            margin: 5px auto;
+            border-radius: 3px;
+            transition: 0.5s;
+            background: transparent;
+            background-color: $secondaryBgColor;
+            color: $primaryTextColor;
+            span {
+                font-size: 0.9em;
+            }
+            .iconify {
+                margin-left: 1rem;
+                color: lighten($primaryTextColor, 20%);
+            }
+            &:hover {
+                background-color: lighten($secondaryColor, 30%);
+            }
+        }
+
+        .sizeList {
+            width: 60%;
+            text-align: center;
+            background-color: $secondaryBgColor;
+            display: none;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 0.5rem;
+            animation: fade 0.5s;
+            li {
+                flex-basis: 30%;
+                border-radius: 5px;
+                &:hover {
+                    background-color: lighten($secondaryColor, 30%);
+                }
+            }
+        }
+        .sizeListButton {
+            .iconify {
+                transition: 0.5s;
+                transform: none;
+            }
+            &:active .iconify {
+                transform: translateY(5px);
+            }
+        }
+        .show {
+            display: flex;
+        }
+    }
+
+    &:hover .productInfo {
+        display: none;
+    }
+
+    &:hover .productButtons {
+        @extend %flex-center;
+        flex-direction: column;
+    }
+
+    &:hover {
+        box-shadow: 0px 0px 10px 1px #b9b9b9;
+    }
+
+    @keyframes fade {
+        0% {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        100% {
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+    @keyframes fadeUp {
+        0% {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        100% {
+            opacity: 1;
+            transform: none;
+        }
+    }
+}

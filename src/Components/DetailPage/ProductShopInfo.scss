@@ -1,0 +1,174 @@
+@import "../../Styles/config";
+
+.productShopInfo {
+    display: flex;
+    margin: auto;
+    margin-top: 150px;
+    width: 90%;
+    height: 50%;
+    .shopInfo {
+        width: 50%;
+        div {
+            .btn {
+                @extend %buttons;
+                background-color: darken($secondaryBgColor, 10%);
+                color: lighten($primaryTextColor, 10%);
+                i {
+                    margin-right: 1rem;
+                }
+                &:hover {
+                    background-color: lighten($secondaryColor, 30%);
+                }
+            }
+        }
+        display: inline-block;
+        margin-left: 50px;
+        width: 40%;
+        text-align: left;
+        .price {
+            margin-top: 90px;
+            font-size: 1.2rem;
+        }
+
+        & > p {
+            font-size: 0.8rem;
+            line-height: 1.5;
+        }
+
+        .stars_left {
+            margin-left: 0;
+            padding: 30px;
+        }
+
+        .product_delivery_info {
+            color: lighten($primaryTextColor, 20%);
+            font-size: 0.8rem;
+            margin: 20px;
+            div {
+                .fa-check-circle {
+                    color: green;
+                }
+                i {
+                    margin-right: 10px;
+                }
+            }
+            div:not(:first-child) {
+                padding-top: 0.5rem;
+            }
+        }
+
+        .cirkel_color {
+            font-weight: 700;
+            margin: 30px 0;
+            .dot {
+                vertical-align: middle;
+                height: 25px;
+                width: 25px;
+                border-radius: 50%;
+                border: 1px solid darken($primaryColor, 30%);
+                display: inline-block;
+                cursor: pointer;
+                &:hover {
+                    border: 2px solid darken($primaryColor, 10%);
+                }
+            }
+            .dot:nth-of-type(1) {
+                margin-left: 10px;
+                background-color: white;
+            }
+            .dot:nth-of-type(2) {
+                margin-left: 5px;
+                background-color: black;
+            }
+            .dot:nth-of-type(3) {
+                margin-left: 5px;
+                background-color: #c4633d;
+            }
+        }
+
+        .sizeList {
+            width: 60%;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            animation: fade 0.5s;
+            li {
+                cursor: pointer;
+                flex-basis: 25%;
+                border-radius: 5px;
+                border: 1px solid darken($secondaryBgColor, 10%);
+                &:hover {
+                    background-color: lighten($secondaryColor, 30%);
+                }
+            }
+            .active {
+                background-color: lighten($secondaryColor, 30%);
+            }
+        }
+
+        .showItemsInRow {
+            display: flex;
+            margin-top: 10px;
+            align-items: center;
+            .chooseProductCount {
+                margin-right: 10%;
+                .btn-plus_minus {
+                    border: 1px solid darken($primaryColor, 30%);
+                    background-color: $primaryColor;
+                    display: inline-block;
+                    width: 25px;
+                    height: 25px;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    position: relative;
+                    i {
+                        display: block;
+                        height: 100%;
+                    }
+                }
+
+                #count_of_product {
+                    display: inline-block;
+                    padding: 0 20px;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .productShopInfo {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .shopInfo {
+            margin: auto;
+            margin-top: 2rem;
+            width: 80%;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .productShopInfo {
+        .shopInfo {
+            div .btn i {
+                display: none;
+            }
+            .price {
+                margin-top: 40px;
+            }
+            .sizeList {
+                width: 100%;
+            }
+        }
+        .showItemsInRow {
+            flex-direction: column;
+            gap: 2rem;
+        }
+    }
+}

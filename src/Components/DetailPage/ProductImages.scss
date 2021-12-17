@@ -1,0 +1,61 @@
+@import "../../Styles/config";
+
+.images {
+    width: 50%;
+    .image-item {
+        width: 80%;
+        height: fit-content;
+        position: relative;
+        margin: auto;
+        figure {
+            width: 100%;
+        }
+        img {
+            width: 100%;
+            max-height: 500px;
+        }
+    }
+    .smallImages {
+        margin-top: 10px;
+        @extend %flex-center;
+        .active::after {
+            content: none;
+            display: none;
+        }
+        .smlImg {
+            position: relative;
+            margin: 5px;
+            width: 95px;
+            height: 85px;
+            cursor: pointer;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+            &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: lighten($primaryTextColor, 20%);
+                opacity: 0.6;
+                transition: 0.5s;
+            }
+
+            &:hover::after {
+                opacity: 0;
+            }
+            &:hover {
+                border: 1px solid lighten($primaryTextColor, 20%);
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .images {
+        width: 100%;
+    }
+}

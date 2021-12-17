@@ -1,0 +1,118 @@
+@import "config";
+
+footer {
+    min-height: 30vh;
+    width: 100%;
+    position: relative;
+    background-color: $secondaryBgColor;
+
+    main {
+        @extend %flex-center;
+        margin-top: 4rem;
+        padding: 2em 8em;
+        height: 100%;
+        h3 {
+            margin-bottom: 2em;
+        }
+        section {
+            display: flex;
+            flex-direction: column;
+            align-self: flex-start;
+            width: 20%;
+            height: 100%;
+            margin: 0 5px;
+            ul {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                li {
+                    line-height: 1.8;
+                }
+                a:hover {
+                    border-bottom: $secondaryColor 1px solid;
+                }
+            }
+        }
+        .footer-col-1 {
+            flex-direction: row;
+            width: 40%;
+            .social-medias {
+                a {
+                    display: block;
+                    width: fit-content;
+                    padding: 3px 5px;
+                    background-color: $secondaryColor;
+                    margin: 1rem 0;
+                    border-radius: 0.3em;
+                    &:hover .iconify {
+                        color: #dbdbdb;
+                    }
+                }
+                .iconify {
+                    font-size: 1.8em;
+                    vertical-align: middle;
+                }
+            }
+            .contact-info {
+                padding-left: 3rem;
+                align-self: flex-start;
+                .iconify {
+                    margin-right: 0.5em;
+                    vertical-align: middle;
+                }
+                p {
+                    margin: 0.8em 0;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    footer {
+        height: fit-content;
+        main {
+            section {
+                width: 100%;
+            }
+            padding: 2em 1rem;
+        }
+    }
+}
+
+@media screen and (max-width: 780px) {
+    footer {
+        main {
+            flex-direction: column;
+            align-items: flex-start;
+            padding-left: 3rem;
+            section {
+                margin-top: 3rem;
+                width: 100%;
+            }
+            h3 {
+                margin-bottom: 1em;
+            }
+            .footer-col-1 {
+                flex-direction: column;
+                width: 100%;
+                .social-medias a {
+                    display: inline-block;
+                    margin-right: 1rem;
+                }
+                .contact-info {
+                    padding-left: 0;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    footer main {
+        padding-left: 1rem;
+        .footer-col-1 .social-medias a {
+            margin-right: 5px;
+        }
+    }
+}
