@@ -5,124 +5,127 @@
     display: flex;
     width: 100%;
     padding: 0 2rem;
-    .filter {
+    aside {
         width: 20%;
         min-width: 250px;
-        font-size: 1rem;
-        padding: 1rem 2rem;
-        .hideSidebarButton {
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            cursor: pointer;
-            color: darken($primaryColor, 80%);
-            display: none;
-            .iconify {
-                font-size: 2rem;
-            }
-        }
-        input {
-            cursor: pointer;
-        }
-        .maxPrice {
-            p {
-                font-size: 0.9rem;
-                span {
-                    font-weight: 700;
-                    margin-left: 10px;
-                }
-            }
-        }
-        .colors {
-            width: 100px;
-        }
-        .row {
-            margin-top: 2rem;
-            h4 {
-                padding: 1rem 0;
-            }
-            label {
-                display: block;
-                position: relative;
+        .filter {
+            width: 100%;
+            font-size: 1rem;
+            padding: 1rem 2rem;
+            .hideSidebarButton {
+                position: absolute;
+                right: 10px;
+                top: 10px;
                 cursor: pointer;
-                width: 100%;
-                height: 30px;
-                padding-left: 30px;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-                user-select: none;
-                &:hover input ~ .checkmark {
-                    border-color: $secondaryColor;
+                color: darken($primaryColor, 80%);
+                display: none;
+                .iconify {
+                    font-size: 2rem;
                 }
-                .checkmark {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 26px;
-                    height: 26px;
-                    border: 1px solid darken($primaryColor, 30%);
-                    &:before {
-                        content: "";
-                        position: absolute;
-                        left: 50%;
-                        top: 50%;
-                        transform: translate(-50%, -50%);
-                        width: 20px;
-                        height: 20px;
-                        border: none;
-                        background-color: $secondaryColor;
-                        display: none;
-                    }
-                    &:after {
-                        content: "";
-                        position: absolute;
-                        display: none;
-                        left: 8px;
-                        top: 4px;
-                        width: 5px;
-                        height: 10px;
-                        border: solid $secondaryBgColor;
-                        border-width: 0 3px 3px 0;
-                        -webkit-transform: rotate(45deg);
-                        -ms-transform: rotate(45deg);
-                        transform: rotate(45deg);
+            }
+            input {
+                cursor: pointer;
+            }
+            .maxPrice {
+                p {
+                    font-size: 0.9rem;
+                    span {
+                        font-weight: 700;
+                        margin-left: 10px;
                     }
                 }
-
-                input[type="checkbox"] {
-                    position: absolute;
-                    width: 0;
-                    height: 0;
+            }
+            .colors {
+                width: 100px;
+            }
+            .row {
+                margin-top: 2rem;
+                h4 {
+                    padding: 1rem 0;
+                }
+                label {
+                    display: block;
+                    position: relative;
                     cursor: pointer;
-                    opacity: 0;
+                    width: 100%;
+                    height: 30px;
+                    padding-left: 30px;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+                    &:hover input ~ .checkmark {
+                        border-color: $secondaryColor;
+                    }
+                    .checkmark {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 26px;
+                        height: 26px;
+                        border: 1px solid darken($primaryColor, 30%);
+                        &:before {
+                            content: "";
+                            position: absolute;
+                            left: 50%;
+                            top: 50%;
+                            transform: translate(-50%, -50%);
+                            width: 20px;
+                            height: 20px;
+                            border: none;
+                            background-color: $secondaryColor;
+                            display: none;
+                        }
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            display: none;
+                            left: 8px;
+                            top: 4px;
+                            width: 5px;
+                            height: 10px;
+                            border: solid $secondaryBgColor;
+                            border-width: 0 3px 3px 0;
+                            -webkit-transform: rotate(45deg);
+                            -ms-transform: rotate(45deg);
+                            transform: rotate(45deg);
+                        }
+                    }
+
+                    input[type="checkbox"] {
+                        position: absolute;
+                        width: 0;
+                        height: 0;
+                        cursor: pointer;
+                        opacity: 0;
+                    }
+                    input:checked ~ .checkmark:before {
+                        display: block;
+                    }
+                    input:checked ~ .checkmark:after {
+                        display: block;
+                    }
                 }
-                input:checked ~ .checkmark:before {
-                    display: block;
+                .displayInline {
+                    width: 33%;
+                    display: inline-block;
                 }
-                input:checked ~ .checkmark:after {
-                    display: block;
-                }
-            }
-            .displayInline {
-                width: 33%;
-                display: inline-block;
-            }
-            .color {
-                .checkmark {
-                    border-radius: 15px;
-                    border-width: 3px;
-                    background-color: $primaryColor;
-                    transition: 0.5s;
-                }
-                input:hover ~ .checkmark {
-                    transform: scale(1.1);
-                }
-                input:checked ~ .checkmark:before {
-                    display: none;
-                }
-                input:checked ~ .checkmark:after {
-                    display: none;
+                .color {
+                    .checkmark {
+                        border-radius: 15px;
+                        border-width: 3px;
+                        background-color: $primaryColor;
+                        transition: 0.5s;
+                    }
+                    input:hover ~ .checkmark {
+                        transform: scale(1.1);
+                    }
+                    input:checked ~ .checkmark:before {
+                        display: none;
+                    }
+                    input:checked ~ .checkmark:after {
+                        display: none;
+                    }
                 }
             }
         }
