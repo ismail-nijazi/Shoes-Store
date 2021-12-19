@@ -116,7 +116,7 @@ const ProductShopInfo = () => {
                     <ul className="sizeList ">{generateSizeList()}</ul>
                 </div>
 
-                <h3 className="price">${product.price}</h3>
+                <h3 className="price">${product.price * selectedCount}</h3>
                 <div className="showItemsInRow">
                     <div className="chooseProductCount">
                         <button
