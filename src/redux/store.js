@@ -45,7 +45,9 @@ const cartProducts = createSlice({
                 }
             }
             if (!productExist) {
-                state.cartProducts.push(action.payload);
+                const product = { ...action.payload };
+                product.price = product.count * product.basePrice;
+                state.cartProducts.push(product);
             }
         },
         decreaseTheCount: (state, action) => {

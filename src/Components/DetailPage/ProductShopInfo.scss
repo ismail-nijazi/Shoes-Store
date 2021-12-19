@@ -169,6 +169,9 @@
         .showItemsInRow {
             flex-direction: column;
             gap: 2rem;
+            .chooseProductCount {
+                margin-left: 10%;
+            }
         }
     }
 }

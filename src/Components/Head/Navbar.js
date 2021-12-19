@@ -20,7 +20,6 @@ const Navbar = () => {
     const [nav, setNav] = useState(navbar);
     useEffect(() => {
         setNav(navbar);
-        dispatch(navbarActions.show());
         if (nav.current !== null) {
             let timer = 0;
             window.addEventListener(
